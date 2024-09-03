@@ -1,0 +1,88 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+@use "../typo/mixins" as *;
+
+/** @section Hero */
+.hero {
+    text-align: center;
+    padding: 27.2rem var(--spacing-base) var(--spacing-base);
+    overflow-x: hidden;
+    position: relative;
+    &::before,
+    &::after {
+        background: image-set(
+            "images/hero.webp" 1x,
+            "images/hero@2x.webp" 2x,
+            "images/hero@3x.webp" 3x,
+            "images/hero@4x.webp" 4x
+        ) no-repeat;
+        display: block;
+        width: 394px;
+        height: var(--hero-background-height);
+        position: absolute;
+        inset-block-start: var(--spacing-big);
+        content: "";
+    }
+    &::before {
+        inset-inline-end: var(--hero-inline-position);
+    }
+    &::after {
+        background-position-y: calc(var(--hero-background-height) * -1);
+        inset-inline-start: var(--hero-inline-position);
+    }
+    h2 {
+        @include title-typo;
+        font-size: 4rem;
+        color: var(--secondary);
+    }
+    p {
+        margin-block: var(--spacing-small);
+    }
+    ul {
+        list-style: none;
+    }
+    li {
+        margin-block-start: var(--spacing-tiny);
+    }
+    @include css-media-queries($below-breakpoint: hero-inline-buttons) {
+        &::before,
+        &::after {
+            transform: scale(calc(160 / var(--hero-background-height-unitless)));
+        }
+        &::before {
+            transform-origin: right top;
+        }
+        &::after {
+            transform-origin: left top;
+        }
+    }
+    @include css-media-queries($from-breakpoint: hero-inline-buttons) {
+        padding-block: 43.8rem var(--spacing-big);
+        padding-inline: 15.985rem;
+        h2 {
+            font-size: 4.8rem;
+        }
+        ul {
+            display: flex;
+            gap: 1.7rem;
+            justify-content: center;
+        }
+    }
+    @include css-media-queries($from-breakpoint: hero-multicol) {
+        padding-block: 8.7rem;
+        padding-inline: var(--hero-inline-padding);
+        &::before,
+        &::after {
+            --hero-inline-position: calc(50% + var(--hero-inline-size) / 2 + 12.785rem);
+        }
+        &::after {
+            inset-block-start: 12.1rem;
+        }
+        h2 {
+            font-size: 6.4rem;
+        }
+        p {
+            margin-block: var(--spacing-base);
+        }
+    }
+}

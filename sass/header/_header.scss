@@ -1,0 +1,11 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section Header */
+#header {
+    text-align: center;
+    padding: 4.8rem 8rem 0;
+    @include css-media-queries($from-breakpoint: hero-multicol) {
+        padding-block-start: 8rem;
+    }
+}

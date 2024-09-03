@@ -1,0 +1,32 @@
+@charset "utf-8";
+@use "sass:list";
+
+/**
+ * @site Meet landing page
+ * @author Victor Brito
+ */
+
+// Browser configuration
+@use "./base/config" as *;
+
+@use "./base/mixins" with (
+    $media-queries-breakpoints: (
+        tablet: 400,
+        features-one-line-gallery: 561,
+        features-sized-block-text: 686,
+        hero-inline-buttons: 688,
+        features-one-line-gallery-enlarged: 1208,
+        hero-multicol: 1312,
+        desktop: 1440
+    )
+);
+@use "./variables";
+@use "./base/reset";
+@use "./base/print";
+@use "./typo/font-face";
+@use "./typo/typo";
+@use "./header/header";
+@use "./button/button";
+@use "./layout/layout";
+@use "./layout/hero";
+@use "./layout/features";

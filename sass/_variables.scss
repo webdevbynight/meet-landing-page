@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+// Variables
+:root {
+    // Fonts
+    --font: "Red Hat Display", sans-serif;
+
+    // Colours
+    --primary: #87879d;
+    --secondary: #28283d;
+    --tertiary: #fafafa;
+    --quaternary: #d1d1df;
+    --quinary: #8fe3f9;
+    --hexary: #d9b8ff;
+    --septuary: #4d96a9;
+    --primary-background: #fafafa;
+    --secondary-background: #4d96a9;
+    --secondary-background-hover: #71c0d4;
+    --tertiary-background: #855fb1;
+    --tertiary-background-hover: #b18bdd;
+    --quaternary-background: #d1d1df;
+
+    // Viewports
+    --largest-viewport-inline: 100dvi;
+    --desktop-reference: 144;
+
+    // Margins, paddings, borders, boxes
+    --spacing-tiny: 1.6rem;
+    --spacing-small: 2.4rem;
+    --spacing-base: 3.2rem;
+    --spacing-big: 6.4rem;
+    --hero-inline-size: calc(44.83 / var(--desktop-reference) * 100dvi);
+    --hero-inline-padding: calc((100dvi - var(--hero-inline-size)) / 2);
+    --hero-inline-position: calc(50% + 17px / 2);
+    --hero-background-width: 394px;
+    --hero-background-height: 303px;
+    --hero-background-height-unitless: 303;
+    --feature-chapter-line: 8rem;
+    --feature-chapter-line-offset: 5.6rem;
+    --feature-chapter-offset-background: 10.8rem;
+    --feature-chapter-offset-multicol-title: 44.5rem;
+    --feature-chapter-offset-multicol-title-unitless: 44.5;
+    --feature-chapter-offset-multicol-title-size: minmax(calc(var(--feature-chapter-offset-multicol-title-unitless) / var(--desktop-reference) * 100dvi), var(--feature-chapter-offset-multicol-title));
+    --feature-chapter-offset-multicol-text: 35.5rem;
+    --feature-chapter-offset-multicol-text-unitless: 35.5;
+    --feature-chapter-offset-multicol-text-size: minmax(calc(var(--feature-chapter-offset-multicol-text-unitless) / var(--desktop-reference) * 100dvi), var(--feature-chapter-offset-multicol-text));
+    --feature-chapter-offset-multicol-button: 26.6rem;
+    --feature-chapter-offset-multicol-button-unitless: 26.6;
+    --feature-chapter-offset-multicol-button-size: minmax(calc(var(--feature-chapter-offset-multicol-button-unitless) / var(--desktop-reference) * 100dvi), var(--feature-chapter-offset-multicol-button));
+
+    // Filters
+    --feature-filter: rgb(77 150 169 / .9);
+}

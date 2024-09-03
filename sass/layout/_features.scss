@@ -1,0 +1,177 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+@use "../typo/mixins" as *;
+
+/** @section Features */
+.features {
+    text-align: center;
+    counter-reset: feature;
+    section {
+        padding: var(--spacing-base) var(--spacing-base) var(--spacing-big);
+        position: relative;
+        counter-increment: feature;
+        h2 {
+            @include title-typo;
+            font-size: 3.2rem;
+            color: var(--secondary);
+            > span {
+                font-size: 1.2rem;
+                letter-spacing: calc(.4em / 1.2);
+                color: var(--septuary);
+                text-transform: uppercase;
+                display: block;
+                margin-block-end: var(--spacing-tiny);
+            }
+        }
+        p {
+            margin-block-start: var(--spacing-base);
+        }
+        &::before {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            font-weight: 900;
+            background: var(--primary-background);
+            display: inline-block;
+            align-content: center;
+            inline-size: 5.5rem;
+            margin-block-start: var(--feature-chapter-line);
+            border: 1px solid var(--quaternary-background);
+            border-radius: 50%;
+            aspect-ratio: 1;
+            content: "0" counter(feature);
+        }
+        &::after {
+            background: var(--quaternary-background);
+            display: block;
+            inline-size: 1px;
+            block-size: var(--feature-chapter-line);
+            position: absolute;
+            inset-block-start: var(--spacing-base);
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            content: "";
+        }
+        &:last-child {
+            color: var(--tertiary);
+            padding-block-start: 0;
+            &::before {
+                color: var(--primary);
+            }
+            &::after {
+                inset-block-start: 0;
+            }
+            h2 {
+                color: inherit;
+                margin-block-start: 3.6rem;
+                &::before,
+                &::after {
+                    position: absolute;
+                    inset: var(--feature-chapter-offset-background) 0 0;
+                    z-index: -1;
+                    content: "";
+                }
+                &::before {
+                    background: var(--secondary-background) url("images/features-illustration.jpg") no-repeat 50% / cover;
+                }
+                &::after {
+                    background: var(--feature-filter);
+                }
+            }
+            p {
+                margin-block-start: var(--spacing-small);
+            }
+        }
+    }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-tiny);
+        margin-block: var(--spacing-big);
+        img {
+            inline-size: 100%;
+            block-size: 144px;
+            border-radius: .8rem;
+            object-fit: cover;
+        }
+    }
+    @include css-media-queries($from-breakpoint: features-one-line-gallery) {
+        .gallery {
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-small);
+            img {
+                block-size: 160px;
+                object-position: center 25%;
+            }
+        }
+    }
+    @include css-media-queries($from-breakpoint: features-sized-block-text) {
+        section {
+            padding-inline: 4.4rem;
+            > :not(div) {
+                max-inline-size: calc(50.4 / 76.8 * var(--largest-viewport-inline));
+                margin-inline: auto;
+            }
+            h2 {
+                font-size: 3.6rem;
+                > span {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    @include css-media-queries($from-breakpoint: features-one-line-gallery-enlarged) {
+        .gallery {
+            grid-template: 256px / repeat(4, 256px);
+            gap: var(--spacing-base);
+            justify-content: center;
+            img {
+                block-size: 100%;
+                object-position: center;
+            }
+        }
+    }
+    @include css-media-queries($from-breakpoint: features-one-line-gallery-enlarged) {
+        section {
+            padding-block: var(--feature-chapter-line-offset) 7.2rem;
+            &::after {
+                inset-block-start: var(--feature-chapter-line-offset);
+            }
+            h2 {
+                font-size: 4rem;
+                > span {
+                    font-size: 1.6rem;
+                }
+            }
+            &:first-child {
+                > :not(div) {
+                    max-inline-size: calc(54.4 / var(--desktop-reference) * var(--largest-viewport-inline));
+                }
+            }
+            &:last-child {
+                display: grid;
+                grid-template-rows: repeat(2, auto);
+                grid-template-columns: 1fr var(--feature-chapter-offset-multicol-text-size) var(--feature-chapter-offset-multicol-button-size);
+                gap: 8.4rem var(--spacing-base);
+                justify-items: center;
+                padding-inline: max(calc(16 / var(--desktop-reference) * var(--largest-viewport-inline)), 16rem);
+                padding-block-end: 11.2rem;
+                &::before {
+                    grid-column: 1 / -1;
+                    justify-self: center;
+                }
+                h2,
+                p {
+                    text-align: initial;
+                    max-inline-size: initial;
+                    margin-block-start: initial;
+                    margin-inline: initial;
+                }
+                p {
+                    &:last-of-type {
+                        justify-self: end;
+                    }
+                }
+            }
+        }
+    }
+}
